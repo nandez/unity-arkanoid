@@ -31,9 +31,6 @@ public class Block : MonoBehaviour
                 gameManager.GetComponent<GameStateManager>().OnBlockDestroyed(points);
                 Destroy(gameObject);
             }
-                
-
-           
         }
     }
 }

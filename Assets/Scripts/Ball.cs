@@ -1,33 +1,44 @@
 using UnityEngine;
 
+// TODO: Ver los decorados de la clase para especificar
+// que componentes son requeridos. ej: RigidBody2D
 public class Ball : MonoBehaviour
 {
-    public GameObject gameManager;
+    /// <summary>
+    /// Velocidad de la pelota.
+    /// </summary>
+    public float speed = 7.5f;
 
-    public float Speed = 8.0f;
+
+    // Creo un delegado para emitir el evento y suscribirme desde el GameManager.
+    public delegate void DeadZoneCollision();
+    public event DeadZoneCollision OnDeadZoneCollision;
+
+    private Vector2 initialPosition;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector2.up * Speed;
-    }
+        // Guardo la posicion inicial para utilizar en el Reset();
+        initialPosition = transform.position;
 
-    // Update is called once per frame
-    private void Update()
-    {
+        // Guardo la referencia al componente RigidBody2D
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.collider.CompareTag("Player"))
+        if (col.collider.CompareTag("DeadZone"))
         {
-            var x = (transform.position.x - col.transform.position.x) / col.collider.bounds.size.x;
-            Vector2 dir = new Vector2(x, 1).normalized;
+            // Si colisiona con el borde inferior, emito el evento "OnDeadZoneCollision"
+            // para notificar a los suscriptores.
+            OnDeadZoneCollision?.Invoke();
+        }
+    }
 
-            GetComponent<Rigidbody2D>().velocity = Speed * dir;
-        }
-        else if (col.collider.CompareTag("DeadZone"))
-        {
-            gameManager.GetComponent<GameStateManager>().OnDeadZoneCollition();
-        }
+    public void ResetState()
+    {
+        transform.position = initialPosition;
+        rb.velocity = Vector2.zero;
     }
 }
