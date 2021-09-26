@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2272918584852859380}
   - component: {fileID: 5881890229524984303}
   - component: {fileID: 5573925389384231338}
+  - component: {fileID: -6506791847277559542}
   m_Layer: 0
   m_Name: TileBlue
   m_TagString: Untagged
@@ -99,6 +100,32 @@ MonoBehaviour:
   points: 10
   hitPoints: 1
   invulnerable: 0
+  spawnRate: 0.3
   normalForm: {fileID: 21300000, guid: 4b3a7e046d0ecbf4ca160001e5cc2b42, type: 3}
   brokenForm: {fileID: 21300000, guid: 8e7414e36bac65d4492d8ce515ec6edf, type: 3}
-  gameManager: {fileID: 0}
+--- !u!61 &-6506791847277559542
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980443432465220042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 0.85333335}
+    newSize: {x: 2.56, y: 0.85333335}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 0.85333335}
+  m_EdgeRadius: 0

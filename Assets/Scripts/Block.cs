@@ -6,10 +6,11 @@ public class Block : MonoBehaviour
     public int hitPoints = 1;
     public bool invulnerable = false;
 
+    [Range(0, 1)]
+    public float spawnRate;
+
     public Sprite normalForm;
     public Sprite brokenForm;
-
-    public GameObject gameManager;
 
     public void Start()
     {
@@ -28,7 +29,7 @@ public class Block : MonoBehaviour
             // Si el bloque no tiene mas puntos, destruyo el gameObject
             if (hitPoints <= 0)
             {
-                gameManager.GetComponent<GameStateManager>().OnBlockDestroyed(points);
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>().OnBlockDestroyed(points);
                 Destroy(gameObject);
             }
         }
