@@ -43,8 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                // SI ademas el jugador presiona la tecla Espacio, entonces lanzo la pelota hacia arriba.
-                ballRef.GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
+                // Si ademas el jugador presiona la tecla Espacio, entonces lanzo la pelota hacia arriba.
+                // Genero un vector con un random en la x para dar una pequeña variación al movimiento inicial.
+                var upDirection = new Vector2(Random.Range(-0.25f, 0.25f), 1);
+                Debug.Log(upDirection.x);
+                ballRef.GetComponent<Ball>().MoveBall(upDirection);
 
                 // TODO: verificar antes si no existe un powerup de stickyMode activo.. en ese caso
                 // el sticky no debería setearse en false sino que este debería apagarse cuando finalice
@@ -60,11 +63,8 @@ public class PlayerMovement : MonoBehaviour
         // entonces calculo el vector de rebote.
         if (col.collider.name.Equals(ballRef.name) && !stickyMode)
         {
-            var ballSpeed = ballRef.GetComponent<Ball>().speed;
-            var ballRb = ballRef.GetComponent<Rigidbody2D>();
-
             var x = (col.transform.position.x - transform.position.x) / playerCol.bounds.size.x;
-            ballRb.velocity = ballSpeed * new Vector2(x, 1).normalized;
+            ballRef.GetComponent<Ball>().MoveBall(new Vector2(x, 1));
         }
     }
 

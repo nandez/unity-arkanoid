@@ -9,6 +9,11 @@ public class Ball : MonoBehaviour
     /// </summary>
     public float speed = 7.5f;
 
+    /// <summary>
+    /// Velocidad máxima de la pelota
+    /// </summary>
+    public float maxSpeed = 25f;
+
 
     // Creo un delegado para emitir el evento y suscribirme desde el GameManager.
     public delegate void DeadZoneCollision();
@@ -34,6 +39,11 @@ public class Ball : MonoBehaviour
             // para notificar a los suscriptores.
             OnDeadZoneCollision?.Invoke();
         }
+    }
+
+    public void MoveBall(Vector2 direction)
+    {
+        rb.velocity = Vector2.ClampMagnitude(speed * direction.normalized, maxSpeed);
     }
 
     public void ResetState()
