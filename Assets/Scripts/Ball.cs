@@ -14,6 +14,8 @@ public class Ball : MonoBehaviour
     /// </summary>
     public float maxSpeed = 25f;
 
+    public AudioClip deadZoneSfx;
+    public GameObject soundManager;
 
     // Creo un delegado para emitir el evento y suscribirme desde el GameManager.
     public delegate void DeadZoneCollision();
@@ -38,6 +40,8 @@ public class Ball : MonoBehaviour
             // Si colisiona con el borde inferior, emito el evento "OnDeadZoneCollision"
             // para notificar a los suscriptores.
             OnDeadZoneCollision?.Invoke();
+
+            soundManager.GetComponent<AudioSource>().PlayOneShot(deadZoneSfx);
         }
     }
 

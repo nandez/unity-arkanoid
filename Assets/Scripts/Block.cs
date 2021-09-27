@@ -12,15 +12,24 @@ public class Block : MonoBehaviour
     public Sprite normalForm;
     public Sprite brokenForm;
 
+    public AudioClip blockHitSfx;
+    public AudioClip blockDestroySfx;
+
+    private bool hasCollide = false;
+
     public void Start()
     {
         GetComponent<SpriteRenderer>().sprite = normalForm;
     }
 
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ball") && !invulnerable)
+        
+        if (collision.collider.CompareTag("Ball") && !hasCollide && !invulnerable)
         {
+            // Seteo la varaible hasCollide para evitar multiples colisiones con la pelota..
+            hasCollide = true;
             hitPoints--;
 
             if (hitPoints <= 2)
@@ -30,8 +39,19 @@ public class Block : MonoBehaviour
             if (hitPoints <= 0)
             {
                 GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>().OnBlockDestroyed(points);
+                GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>().PlayOneShot(blockDestroySfx, 0.35f);
                 Destroy(gameObject);
             }
+            else
+            {
+                GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>().PlayOneShot(blockHitSfx, 0.5f);
+            }
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (hasCollide)
+            hasCollide = false;
     }
 }

@@ -58,9 +58,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 41712524215fadf4790bdc601f4f8769, type: 3}
     - target: {fileID: 4105044961468456200, guid: ae761db8e2e16f847bf60190c025fc57, type: 3}
+      propertyPath: blockHitSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 67fa44ddae069ab4fac16409b1c46a5b, type: 3}
+    - target: {fileID: 4105044961468456200, guid: ae761db8e2e16f847bf60190c025fc57, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4105044961468456200, guid: ae761db8e2e16f847bf60190c025fc57, type: 3}
+      propertyPath: blockDestroySfx
+      value: 
+      objectReference: {fileID: 8300000, guid: f7f4f1d61c4dc0c4a8e7f6f3b71d9a67, type: 3}
     - target: {fileID: 7649790928044653910, guid: ae761db8e2e16f847bf60190c025fc57, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -109,7 +117,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileYellow Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ae761db8e2e16f847bf60190c025fc57, type: 3}
 --- !u!1 &8826598281313437109 stripped
 GameObject:

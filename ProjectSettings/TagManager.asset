@@ -7,6 +7,8 @@ TagManager:
   - Ball
   - DeadZone
   - GameManager
+  - Tile
+  - SoundManager
   layers:
   - Default
   - TransparentFX

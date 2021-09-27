@@ -54,9 +54,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8106ce8a95b46714888b6bf0c23f85c9, type: 3}
     - target: {fileID: 3197306198166449621, guid: 7e9803d1efb9ffa4dade2841025cc5ae, type: 3}
+      propertyPath: blockHitSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 67fa44ddae069ab4fac16409b1c46a5b, type: 3}
+    - target: {fileID: 3197306198166449621, guid: 7e9803d1efb9ffa4dade2841025cc5ae, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3197306198166449621, guid: 7e9803d1efb9ffa4dade2841025cc5ae, type: 3}
+      propertyPath: blockDestroySfx
+      value: 
+      objectReference: {fileID: 8300000, guid: f7f4f1d61c4dc0c4a8e7f6f3b71d9a67, type: 3}
     - target: {fileID: 3505276673437726096, guid: 7e9803d1efb9ffa4dade2841025cc5ae, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -109,7 +117,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7e9803d1efb9ffa4dade2841025cc5ae, type: 3}
 --- !u!1 &3969883127910754550 stripped
 GameObject:

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6506791847277559542}
   m_Layer: 0
   m_Name: TileBlue
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,9 @@ MonoBehaviour:
   spawnRate: 0.3
   normalForm: {fileID: 21300000, guid: 4b3a7e046d0ecbf4ca160001e5cc2b42, type: 3}
   brokenForm: {fileID: 21300000, guid: 8e7414e36bac65d4492d8ce515ec6edf, type: 3}
+  blockHitSfx: {fileID: 8300000, guid: 67fa44ddae069ab4fac16409b1c46a5b, type: 3}
+  blockDestroySfx: {fileID: 8300000, guid: f7f4f1d61c4dc0c4a8e7f6f3b71d9a67, type: 3}
+  soundManager: {fileID: 0}
 --- !u!61 &-6506791847277559542
 BoxCollider2D:
   m_ObjectHideFlags: 0

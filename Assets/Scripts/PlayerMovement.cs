@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public GameObject ballRef;
 
+    /// <summary>
+    /// Audio a ejecutar cuando golpea la pelota.
+    /// </summary>
+    public AudioClip ballHitSfx;
+    public GameObject soundManager;
+
     private Vector2 initialPosition;
     private bool stickyMode = true;
 
@@ -46,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
                 // Si ademas el jugador presiona la tecla Espacio, entonces lanzo la pelota hacia arriba.
                 // Genero un vector con un random en la x para dar una pequeña variación al movimiento inicial.
                 var upDirection = new Vector2(Random.Range(-0.25f, 0.25f), 1);
-                Debug.Log(upDirection.x);
                 ballRef.GetComponent<Ball>().MoveBall(upDirection);
 
                 // TODO: verificar antes si no existe un powerup de stickyMode activo.. en ese caso
@@ -65,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         {
             var x = (col.transform.position.x - transform.position.x) / playerCol.bounds.size.x;
             ballRef.GetComponent<Ball>().MoveBall(new Vector2(x, 1));
+            soundManager.GetComponent<AudioSource>().PlayOneShot(ballHitSfx, 0.5f);
         }
     }
 

@@ -102,14 +102,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 07a710a932eef594b94d9da4b8dadfd3, type: 3}
     - target: {fileID: 5573925389384231338, guid: 14cb829d0ea1afc4a9f2d6c238fe5569, type: 3}
+      propertyPath: blockHitSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 67fa44ddae069ab4fac16409b1c46a5b, type: 3}
+    - target: {fileID: 5573925389384231338, guid: 14cb829d0ea1afc4a9f2d6c238fe5569, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5573925389384231338, guid: 14cb829d0ea1afc4a9f2d6c238fe5569, type: 3}
+      propertyPath: blockDestroySfx
+      value: 
+      objectReference: {fileID: 8300000, guid: f7f4f1d61c4dc0c4a8e7f6f3b71d9a67, type: 3}
     - target: {fileID: 5881890229524984303, guid: 14cb829d0ea1afc4a9f2d6c238fe5569, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 07a710a932eef594b94d9da4b8dadfd3, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 14cb829d0ea1afc4a9f2d6c238fe5569, type: 3}
 --- !u!1 &7987540722277086568 stripped
 GameObject:

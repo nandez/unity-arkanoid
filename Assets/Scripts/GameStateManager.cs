@@ -43,6 +43,15 @@ public class GameStateManager : MonoBehaviour
     {
         playerScore += points;
         scoreElement.text = string.Format("SCORE{0}{1:D6}", Environment.NewLine, playerScore);
+
+        var remainingTiles = GameObject.FindGameObjectsWithTag("Tile");
+
+        if(remainingTiles.Length == 0)
+        {
+            // Pauso el juego para mostrar la pantalla de highscores
+            Time.timeScale = 0;
+            // TODO: win..
+        }
     }
 
     private void UpdatePlayerLivesDisplay()
