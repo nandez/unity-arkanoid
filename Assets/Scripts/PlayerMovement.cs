@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     /// Audio a ejecutar cuando golpea la pelota.
     /// </summary>
     public AudioClip ballHitSfx;
+
     public GameObject soundManager;
 
     private Vector2 initialPosition;
@@ -35,29 +36,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Get Horizontal Input
-        float horizontal = Input.GetAxisRaw("Horizontal");
-
-        // Set Velocity (movement direction * speed)
-        playerRb.velocity = Vector2.right * horizontal * speed;
-
-        // Verifico si la paleta se encuentra en stickyMode y si está tocando la pelota
-        if (stickyMode && playerCol.IsTouching(ballRef.GetComponent<Collider2D>()))
+        if (GameStateManager.PlayerLives > 0)
         {
-            // Muevo la pelota junto con la paleta.
-            ballRef.transform.position = new Vector3(transform.position.x, ballRef.transform.position.y, ballRef.transform.position.z);
+            // Get Horizontal Input
+            float horizontal = Input.GetAxisRaw("Horizontal");
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            // Set Velocity (movement direction * speed)
+            playerRb.velocity = Vector2.right * horizontal * speed;
+
+            // Verifico si la paleta se encuentra en stickyMode y si está tocando la pelota
+            if (stickyMode && playerCol.IsTouching(ballRef.GetComponent<Collider2D>()))
             {
-                // Si ademas el jugador presiona la tecla Espacio, entonces lanzo la pelota hacia arriba.
-                // Genero un vector con un random en la x para dar una pequeña variación al movimiento inicial.
-                var upDirection = new Vector2(Random.Range(-0.25f, 0.25f), 1);
-                ballRef.GetComponent<Ball>().MoveBall(upDirection);
+                // Muevo la pelota junto con la paleta.
+                ballRef.transform.position = new Vector3(transform.position.x, ballRef.transform.position.y, ballRef.transform.position.z);
 
-                // TODO: verificar antes si no existe un powerup de stickyMode activo.. en ese caso
-                // el sticky no debería setearse en false sino que este debería apagarse cuando finalice
-                // el tiempo del powerup.
-                stickyMode = false;
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
+                {
+                    // Si ademas el jugador presiona la tecla Espacio, entonces lanzo la pelota hacia arriba.
+                    // Genero un vector con un random en la x para dar una pequeña variación al movimiento inicial.
+                    var upDirection = new Vector2(Random.Range(-0.25f, 0.25f), 1);
+                    ballRef.GetComponent<Ball>().MoveBall(upDirection);
+
+                    // TODO: verificar antes si no existe un powerup de stickyMode activo.. en ese caso
+                    // el sticky no debería setearse en false sino que este debería apagarse cuando finalice
+                    // el tiempo del powerup.
+                    stickyMode = false;
+                }
             }
         }
     }
